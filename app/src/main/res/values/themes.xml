@@ -3,7 +3,7 @@
     <style name="Theme.W2uNk1L5Mh" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/urMom</item>
+        <item name="colorPrimaryVariant">@color/top</item>
         <item name="colorOnPrimary">@color/white_0</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
