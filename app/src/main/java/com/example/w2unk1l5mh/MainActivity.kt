@@ -86,6 +86,7 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
             scoreN()
         }
         rotatoPotato()//color change
+//        rotateScreen()
         flashLoop()
 
         if (music1 == null) {
@@ -114,6 +115,7 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
         if (music4 == null) {
             music4 = MediaPlayer.create(this, R.raw.thetrapaaa)
             music4!!.isLooping = true
+
             music4!!.start()
 
         } else music4!!.start()
@@ -183,7 +185,7 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
     }
 
 //    private fun rotateScreen() {
-//        val animator = ObjectAnimator.ofFloat(viewLayout, View.ROTATION, -360, 0, -37, 1824, 367, 2, 15, -200, 150)
+//        val animator = ObjectAnimator.ofFloat(buttOff, View.ROTATION, -360, 0, -37, 1824, 367, 2, 15, -200, 150)
 //        animator.duration = 1500
 //        animator.start()
 //    }
