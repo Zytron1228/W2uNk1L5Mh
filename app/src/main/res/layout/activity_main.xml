@@ -6,6 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF00A1"
+    android:rotation="-179"
+    android:rotationX="-4"
+    android:rotationY="4"
     tools:context=".MainActivity">
 
     <TextView
