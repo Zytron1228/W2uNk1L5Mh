@@ -12,8 +12,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -35,11 +34,21 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
     private lateinit var viewLayout: ConstraintLayout
     private lateinit var cameraManager: CameraManager
     private lateinit var cameraId: String
+    private lateinit var animation1: LinearLayout
+
+//    lateinit var androidImageButton: ConstraintLayout
 
     private lateinit var buttOn: Button
     private lateinit var buttOff: Button
     private var score: Int = 0
     private lateinit var balance: TextView
+
+    private var rot1start =  (0..360).random().toFloat()
+        private var rot1end =  (0..360).random().toFloat()
+    private var rot2start =  (0..360).random().toFloat()
+    private var rot2end = (0..360).random().toFloat()
+    private var rot3start =  (0..360).random().toFloat()
+    private var rot3end =  (0..360).random().toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,8 +94,8 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
         buttOff.setOnClickListener {
             scoreN()
         }
-        rotatoPotato()//color change
-//        rotateScreen()
+//        rotatoPotato()//color change
+        rotateScreen()
         flashLoop()
 
         if (music1 == null) {
@@ -184,11 +193,45 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
 
     }
 
-//    private fun rotateScreen() {
-//        val animator = ObjectAnimator.ofFloat(buttOff, View.ROTATION, -360, 0, -37, 1824, 367, 2, 15, -200, 150)
-//        animator.duration = 1500
-//        animator.start()
-//    }
+    private fun rotateScreen() {
+
+        rot1end =  (0..360).random().toFloat()
+        rot2end =  (0..360).random().toFloat()
+        rot3end =  (0..360).random().toFloat()
+        val animator = ObjectAnimator.ofFloat(viewLayout, View.ROTATION, rot1start, rot1end)
+        animator.duration = 1500
+        animator.start()
+
+        val animator2 = ObjectAnimator.ofFloat(viewLayout, View.ROTATION_X, rot2start, rot2end)
+        animator2.duration = 1500
+        animator2.start()
+
+        val animator3 = ObjectAnimator.ofFloat(viewLayout, View.ROTATION_Y, rot3start, rot3end)
+        animator3.duration = 1500
+        animator3.start()
+
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            rot1start =  (0..360).random().toFloat()
+            rot2start =  (0..360).random().toFloat()
+            rot3start =  (0..360).random().toFloat()
+            val animator = ObjectAnimator.ofFloat(viewLayout, View.ROTATION, rot1end, rot1start)
+            animator.duration = 1500
+            animator.start()
+
+            val animator2 = ObjectAnimator.ofFloat(viewLayout, View.ROTATION_X, rot2end, rot2start)
+            animator2.duration = 1500
+            animator2.start()
+
+            val animator3 = ObjectAnimator.ofFloat(viewLayout, View.ROTATION_Y, rot3end, rot3start)
+            animator3.duration = 1500
+            animator3.start()
+            val handler = Handler(Looper.getMainLooper())
+            handler.postDelayed({
+                rotateScreen()
+            }, 1510)
+        }, 1510)
+    }
 
     private fun flashLoop() {
         val handler = Handler(Looper.getMainLooper())
@@ -237,3 +280,4 @@ class  MainActivity : AppCompatActivity() {//    android:background="#FF0084"
     }
 
 }
+
